@@ -20,7 +20,7 @@ def serialize_post_optimized(post):
 def serialize_tag(tag):
     return {
         'title': tag.title,
-        'posts_with_tag': tag.posts.count(),  # заменить на tag.posts__count
+        'posts_with_tag': tag.posts.count,
     }
 
 
@@ -54,7 +54,7 @@ def post_detail(request, slug):
 
     likes = post.likes.all()
 
-    related_tags = post.tags.all().popular()  # ?
+    related_tags = post.tags.all()
 
     serialized_post = {
         'title': post.title,
